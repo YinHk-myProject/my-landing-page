@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { withStyles } from "@mui/styles";
 
+import NavBar from '../components/NavBar';
 import HeadSection from './HeadSection';
 
 const styles = () => ({
@@ -14,7 +15,7 @@ const MainLandingPage = props => {
     const { classes } = props;
     return (
       <Fragment>
-        <p>Hello</p>
+        <NavBar />
         <HeadSection />
       </Fragment>
   

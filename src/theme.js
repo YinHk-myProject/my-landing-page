@@ -1,7 +1,7 @@
 import { createTheme, responsiveFontSizes, adaptV4Theme } from "@mui/material";
 
 // colors
-const primary = "#b3294e";
+const primary = "#b32947";
 const secondary = "#4829B2";
 const black = "#343a40";
 const darkBlack = "rgb(36, 40, 44)";
@@ -28,6 +28,12 @@ const theme = createTheme(adaptV4Theme({
   palette: {
     primary: { main: primary },
     secondary: { main: secondary },
+    blueTheme: {
+        light: "rgba(173, 216, 230, .5)",
+        royal: "rgba(73, 111, 238, .5)",
+        electric: "linear-gradient(180deg, rgba(84, 58, 183, 1) 0%, rgba(8, 146, 208, .9) 100%)",
+        maya: "rgba(115, 194, 251, .6)"
+    },
     common: {
       black,
       darkBlack

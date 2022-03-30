@@ -15,9 +15,21 @@ const styles = {
     to: { transform: "translate3d(85px, 0, 0)" }
   },
   parallax: {
-    "& > use": {
-      animation: "$moveForever 4s cubic-bezier(0.62, 0.5, 0.38, 0.5) infinite",
-      animationDelay: props => `-${props.animationNegativeDelay}s`
+    "& > use:nth-child(1)": {
+      animation: "$moveForever 7s cubic-bezier(.55, .5, .45, .5) infinite",
+      animationDelay: '-2s'
+    },
+    "& > use:nth-child(2)": {
+      animation: "$moveForever 10s cubic-bezier(.55, .5, .45, .5) infinite",
+      animationDelay: '-3s'
+    },
+    "& > use:nth-child(3)": {
+      animation: "$moveForever 13s cubic-bezier(.55, .5, .45, .5) infinite",
+      animationDelay: '-5s'
+    },
+    "& > use:nth-child(4)": {
+      animation: "$moveForever 16s cubic-bezier(.55, .5, .45, .5) infinite",
+      animationDelay: '-8s'
     }
   }
 };
@@ -26,11 +38,13 @@ const styles = {
  *  https://codepen.io/csspoints/pen/WNeOEqd
  */
 function WaveBorder(props) {
-  const id = String(Math.random());
   const {
     className,
-    lowerColor,
     upperColor,
+    waveColor1,
+    waveColor2,
+    waveColor3,
+    waveColor4,
     classes,
     animationNegativeDelay,
     ...rest
@@ -47,12 +61,15 @@ function WaveBorder(props) {
       >
         <defs>
           <path
-            id={id}
+            id="wave"
             d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
           />
         </defs>
         <g className={classes.parallax}>
-          <use href={`#${id}`} x="48" y="0" fill={lowerColor} />
+          <use href="#wave" x="48" y="0" fill={waveColor1} />
+          <use href="#wave" x="48" y="0" fill={waveColor2} />
+          <use href="#wave" x="48" y="0" fill={waveColor3} />
+          <use href="#wave" x="48" y="0" fill={waveColor4} />
         </g>
       </svg>
     </div>
@@ -60,10 +77,7 @@ function WaveBorder(props) {
 }
 
 WaveBorder.propTypes = {
-  lowerColor: PropTypes.string.isRequired,
-  upperColor: PropTypes.string.isRequired,
-  classes: PropTypes.object.isRequired,
-  animationNegativeDelay: PropTypes.number.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(WaveBorder);

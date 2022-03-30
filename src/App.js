@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { ThemeProvider,  CssBaseline } from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import theme from './theme';
 import MainLandingPage from './mainLandingPage/MainLandingPage';
+import GlobalStyle from './GlobalStyle';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
        <Router>
         <Routes>
          <Route path="/" caseSensitive={false} element={ <MainLandingPage /> }/>
-       </Routes>
+        </Routes>
        </Router>
     </ThemeProvider>
   );
