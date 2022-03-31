@@ -1,4 +1,4 @@
-import { createTheme, responsiveFontSizes, adaptV4Theme } from "@mui/material";
+import { createTheme, responsiveFontSizes, adaptV4Theme } from "@mui/material/styles";
 
 // colors
 const primary = "#b32947";
@@ -26,8 +26,8 @@ const spacing = 8;
 
 const theme = createTheme(adaptV4Theme({
   palette: {
-    primary: { main: primary },
-    secondary: { main: secondary },
+    //primary: { main: primary },
+    //secondary: { main: secondary },
     blueTheme: {
         light: "rgba(173, 216, 230, .5)",
         royal: "rgba(73, 111, 238, .5)",
@@ -71,6 +71,11 @@ const theme = createTheme(adaptV4Theme({
     borderWidth: borderWidth
   },
   overrides: {
+    MuiAppBar: {
+      root: {
+        backgroundColor: "#FFFFFF",
+      },
+    },
     MuiExpansionPanel: {
       root: {
         position: "static"
@@ -125,9 +130,9 @@ const theme = createTheme(adaptV4Theme({
       }
     }
   },
-  typography: {
+ /* typography: {
     useNextVariants: true
-  }
+  }*/
 }));
 
 export default responsiveFontSizes(theme);

@@ -21,7 +21,7 @@ const styles = (theme) => ({
     },
     cardWrapper: {
         height: '100%',
-        borderStyle: 'solid',
+        //borderStyle: 'solid',
         display: 'flex',
         alignItems:'center',
         justifyContent: 'center',
@@ -44,6 +44,9 @@ const styles = (theme) => ({
     image: {
         width: '100%',
         borderRadius: 50
+    },
+    freetext: {
+      color: "textPrimary"
     }
     
 });
@@ -64,7 +67,7 @@ const HeadSection = props => {
                     Currency exchange rate
                 </Typography>} />
              <CardContent>
-                <Typography gutterBottom variant="h5" color="textPrimary" component="p" >
+                <Typography className={classes.freetext} gutterBottom variant="h5" /*color="textPrimary"*/ component="p" >
                   Looking for currency rate ? here is the right place!
                 </Typography>
                 <Typography gutterBottom variant="body" color="textPrimary" component="p">
