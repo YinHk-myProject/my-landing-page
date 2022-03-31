@@ -14,7 +14,8 @@ import WaveBorder from "../components/WaveBorder";
 
 const styles = (theme) => ({
     waveBorder: {
-      paddingTop: theme.spacing(9)
+      paddingTop: theme.spacing(9),
+      //borderStyle: 'dotted'
     },
     wrapper: {
         height: 600,
@@ -57,7 +58,7 @@ const HeadSection = props => {
   
   return (
     <div className={classes.wrapper}>
-     <Card className={classes.cardWrapper}>
+     <Card className={classes.cardWrapper} x={{ maxWidth: 345 }}>
       <CardContent className={classes.cardContent}>
         <Grid container direction="row" justifyContent="center">
          <Grid item xs={6}>
@@ -67,10 +68,10 @@ const HeadSection = props => {
                     Currency exchange rate
                 </Typography>} />
              <CardContent>
-                <Typography className={classes.freetext} gutterBottom variant="h5" /*color="textPrimary"*/ component="p" >
+                <Typography gutterBottom className={classes.freetext} variant="h5"  component="p" >
                   Looking for currency rate ? here is the right place!
                 </Typography>
-                <Typography gutterBottom variant="body" color="textPrimary" component="p">
+                <Typography gutterBottom className={classes.freetext} variant="body" component="p">
                   Currency converter and reliable exchange rate for different currency.
                   Looking for historical exchange rate? This website can provide you with past 
                   exchange rates from 2000. 

@@ -3,29 +3,49 @@ import { Card, CardHeader, CardContent, Grid, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import { withStyles } from "@mui/styles";
 
-
 const styles = theme => ({
     wrapper: {
-        width: '100%'
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems:'center',
+        justifyContent: 'center',
+        paddingTop: 280,
+        paddingBottom: 50
     },
     cardWrapper: {
         height: '100%',
-        borderStyle: 'solid',
+        backgroundColor: '#fafafa',
         display: 'flex',
+        flexDirection: 'column',
         alignItems:'center',
         justifyContent: 'center',
+        borderRadius: 20,
+        marginRight: 55
+    },
+    CardHeader: {
+        color: '#9e035e'
     },
     cardContent: {
         width: '90%',
         minHeight: 200,
-        display: 'flex',
-        alignItems:'center',
-        justifyContent: 'center',
-        //background: '#FFFFFF',
+        padding: 30,
         borderRadius: 6
+        //display: 'flex',
+        //alignItems:'center',
+        //justifyContent: 'center',
+        
+    },
+    typography1: {
+        color: "#0056a1",
+        fontFamily:  '"Boogaloo", cursive'
+    },
+    typography2: {
+        color: "textPrimary",
+        fontSize: 20
+        //fontFamily:  '"Boogaloo", cursive'
     }
 });
-
 
 const featuresList = [
     {
@@ -46,20 +66,19 @@ const featuresList = [
 
 ]
 
-
 const FeatureSection = props => {
     const { classes } = props;
 
     return (
       <div className={classes.wrapper}>
         {featuresList.map(item => 
-          <Card className={classes.cardWrapper}>
-            <CardHeader title={item.title}/>
+          <Card className={classes.cardWrapper} sx={{ maxWidth: 345 }}>
+            <CardHeader className={classes.CardHeader} title={item.title} titleTypographyProps={{fontWeight: 580, fontFamily: '"Secular One", sans-serif' }} />
             <CardContent className={classes.cardContent}>
-                <Typography gutterBottom variant="h5" color="textPrimary" component="p">
+                <Typography className={classes.typography1} gutterBottom variant="h5"  component="p">
                     {item.heading}
                 </Typography>
-                <Typography gutterBottom variant="body" color="textPrimary" component="p">
+                <Typography className={classes.typography2} gutterBottom variant="body"  component="p">
                     {item.description}
                 </Typography>
             </CardContent>

@@ -18,7 +18,7 @@ const styles = (theme) => ({
     },
     brandText: {
       fontFamily: "'Baloo Bhaijaan', cursive",
-      fontWeight: "fontWeightBold" //float: 'right'
+      //fontWeight: "fontWeightBold" //float: 'right'
     }
 });
 
