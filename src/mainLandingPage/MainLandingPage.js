@@ -4,6 +4,8 @@ import { withStyles } from "@mui/styles";
 import NavBar from '../components/NavBar';
 import HeadSection from './HeadSection';
 import FeatureSection from './FeatureSection';
+import CurrencyListSection from './CurrencyListSection';
+import ToolSection from './ToolSection';
 
 const styles = () => ({
     wrapper: {
@@ -19,8 +21,9 @@ const MainLandingPage = props => {
         <NavBar />
         <HeadSection />
         <FeatureSection />
+        <CurrencyListSection />
+        <ToolSection />
       </Fragment>
-  
     );
 };
 

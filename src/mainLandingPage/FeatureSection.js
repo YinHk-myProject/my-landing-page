@@ -7,11 +7,17 @@ const styles = theme => ({
     wrapper: {
         width: '100%',
         display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 350,
+        paddingBottom: 50
+    },
+    cardContainer: {
+        display: 'flex',
         flexDirection: 'row',
         alignItems:'center',
         justifyContent: 'center',
-        paddingTop: 280,
-        paddingBottom: 50
     },
     cardWrapper: {
         height: '100%',
@@ -35,6 +41,13 @@ const styles = theme => ({
         //alignItems:'center',
         //justifyContent: 'center',
         
+    },
+    title: {
+        paddingBottom: 100,
+        fontSize: theme.title.titleFontSize,
+        fontWeight: theme.title.titleFontWeight, 
+        fontFamily: theme.title.titleFontFamily,
+        color: theme.title.titleColor
     },
     typography1: {
         color: "#0056a1",
@@ -63,13 +76,17 @@ const featuresList = [
         heading: 'Historical exchange rates', 
         description: 'You can find out the past exchange rates from 2000 to current'
     }
-]
+];
 
 const FeatureSection = props => {
     const { classes } = props;
 
     return (
       <div className={classes.wrapper}>
+        <Typography className={classes.title} gutterBottom >
+           Features
+        </Typography>
+        <div className={classes.cardContainer}>
         {featuresList.map(item => 
           <Card className={classes.cardWrapper} sx={{ maxWidth: 345 }}>
             <CardHeader className={classes.CardHeader} title={item.title} titleTypographyProps={{fontWeight: 580, fontFamily: '"Secular One", sans-serif' }} />
@@ -83,6 +100,7 @@ const FeatureSection = props => {
             </CardContent>
           </Card> 
         )}
+        </div>
       </div>
     );
 };

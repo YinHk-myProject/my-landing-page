@@ -52,6 +52,12 @@ const theme = createTheme(adaptV4Theme({
     },
     spacing
   },
+  title: {
+    titleColor: "rgba(36, 62, 99, .95)",
+    titleFontFamily: '"Secular One", sans-serif',
+    titleFontSize: 60,
+    titleFontWeight: 600
+  },
   breakpoints: {
     // Define custom breakpoint values.
     // These will apply to Material-UI components that use responsive
@@ -80,7 +86,7 @@ const theme = createTheme(adaptV4Theme({
       root: {
         position: "static"
       }
-    },
+    },/*
     MuiTableCell: {
       root: {
         paddingLeft: spacing * 2,
@@ -91,7 +97,7 @@ const theme = createTheme(adaptV4Theme({
           paddingRight: spacing
         }
       }
-    },
+    },*/
     MuiDivider: {
       root: {
         backgroundColor: borderColor,
