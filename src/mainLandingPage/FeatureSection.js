@@ -62,8 +62,7 @@ const featuresList = [
         title: 'Feature 3',
         heading: 'Historical exchange rates', 
         description: 'You can find out the past exchange rates from 2000 to current'
-    },
-
+    }
 ]
 
 const FeatureSection = props => {
