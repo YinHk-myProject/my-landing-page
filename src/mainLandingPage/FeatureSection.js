@@ -40,7 +40,7 @@ const styles = theme => ({
         }
     },
     CardHeader: {
-        color: '#9e035e'
+        color: '#2e00b8'
     },
     cardContent: {
         width: '90%',
@@ -57,13 +57,12 @@ const styles = theme => ({
         color: theme.title.titleColor
     },
     typography1: {
-        color: "#0056a1",
+        color: "#00aad9",
         fontFamily:  '"Boogaloo", cursive'
     },
     typography2: {
         color: "textPrimary",
         fontSize: 20
-        //fontFamily:  '"Boogaloo", cursive'
     }
 });
 

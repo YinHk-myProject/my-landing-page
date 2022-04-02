@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from "prop-types";
+import { useNavigate } from 'react-router-dom';
 import { withStyles } from "@mui/styles";
 import { Card, 
     CardHeader, 
@@ -87,12 +88,17 @@ const toolList = [
 
 const ToolSection = props => {
     const { classes } = props;
-    const [value, setValue] = React.useState('Currency converter');
+    //const [page, setPage] = useState('main');
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-
+    const navigate = useNavigate();
+    
+    const handleRedirectPage = page => {
+        page==toolList[0].title && navigate('/currency_converter', { replace: true });
+        page==toolList[1].title && navigate('/historical_currency_converter', { replace: true });
+        page==toolList[2].title && navigate('/rates', { replace: true });
+        page==toolList[3].title && navigate('/historical_rates', { replace: true });
+    }
+   
     return (
       <div className={classes.wrapper}>
         <Typography className={classes.title} gutterBottom >
@@ -103,13 +109,7 @@ const ToolSection = props => {
        
         {toolList.map(item => 
 
-          <Card className={classes.cardWrapper} 
-                sx={{ 
-                    //marginLeft: 2, 
-                    //marginRight: 2, 
-                    //width: 250,
-
-                }}>
+          <Card className={classes.cardWrapper}>
             <CardMedia component="img" image={require(`../images/${item.image}`)} alt="jpg" height="140"/>
             <CardContent className={classes.cardContent}>
                 <Typography className={classes.typography} gutterBottom variant="body"  component="p">
@@ -117,7 +117,13 @@ const ToolSection = props => {
                 </Typography>
             </CardContent>
             <CardActions sx={{ display: 'flex', justifyContent: 'start', alignItems:'start' }}>
-                <Button size="small" className={classes.buttonText} size="large">Click here</Button>
+                <Button 
+                    className={classes.buttonText} 
+                    size="large"
+                    onClick={handleRedirectPage(item.title)}
+                >
+                    Click here
+                </Button>
             </CardActions>
           </Card>
         )}
