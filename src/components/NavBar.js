@@ -3,21 +3,23 @@ import PropTypes from "prop-types";
 import { AppBar, Toolbar, Typography, Button, Hidden, IconButton } from "@mui/material";
 import withStyles from '@mui/styles/withStyles';
 
-const styles = (theme) => ({
+const styles = theme => ({
     wrapper: {
-      width: '100%'
+      width: '100%',
+      //backgroundColor: 'rgba(23, 28, 36, 1)'
     },
     toolbar: {
       display: "flex",
-      justifyContent: "space-between"
+      justifyContent: "space-between",
+      //backgroundColor: 'rgba(36, 62, 99, 1)'
     },
     menuButtonText: {
-      color: '##5C76B7',
+      color: 'rgba(36, 62, 99, 1)',
       fontWeight: 'bold',
       textTransform: 'none'
     },
     brandText: {
-      fontFamily: "'Baloo Bhaijaan', cursive",
+      fontFamily: theme.title.titleFontFamily,
       //fontWeight: "fontWeightBold" //float: 'right'
     }
 });
@@ -29,19 +31,37 @@ const TypographyList = classes =>
       className={classes.brandText}
       variant="h4"
       display="inline"
-      color="secondary"
+      color='rgba(36, 62, 99, 1)'
       fontWeight="fontWeightBold"
     >
-      Curr 
+      Cu 
     </Typography>
     <Typography
       variant="h4"
       className={classes.brandText}
       fontWeight="fontWeightBold"
       display="inline"
-      color="green"
+      color="rgba(1, 130, 68, 1)"
     >
-      ency
+      rr
+    </Typography>
+    <Typography
+      variant="h4"
+      className={classes.brandText}
+      fontWeight="fontWeightBold"
+      display="inline"
+      color="rgba(171, 0, 137, 1)"
+    >
+      en
+    </Typography>
+    <Typography
+      variant="h4"
+      className={classes.brandText}
+      fontWeight="fontWeightBold"
+      display="inline"
+      color="rgba(235, 94, 0, 1)"
+    >
+      cy
     </Typography>
     <Typography
       variant="h4"

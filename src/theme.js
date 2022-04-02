@@ -29,10 +29,10 @@ const theme = createTheme(adaptV4Theme({
     //primary: { main: primary },
     //secondary: { main: secondary },
     blueTheme: {
-        light: "rgba(173, 216, 230, .5)",
-        royal: "rgba(73, 111, 238, .5)",
-        electric: "linear-gradient(180deg, rgba(84, 58, 183, 1) 0%, rgba(8, 146, 208, .9) 100%)",
-        maya: "rgba(115, 194, 251, .6)"
+        light: "rgba(173, 216, 230, 1)",
+        royal: "rgba(73, 111, 238, 1)",
+        electric: "rgba(8, 146, 208, 1)",
+        maya: "rgba(115, 194, 251, 1)"
     },
     common: {
       black,
@@ -135,10 +135,7 @@ const theme = createTheme(adaptV4Theme({
         }
       }
     }
-  },
- /* typography: {
-    useNextVariants: true
-  }*/
+  }
 }));
 
 export default responsiveFontSizes(theme);

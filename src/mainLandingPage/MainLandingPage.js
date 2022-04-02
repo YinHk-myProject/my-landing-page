@@ -6,6 +6,7 @@ import HeadSection from './HeadSection';
 import FeatureSection from './FeatureSection';
 import CurrencyListSection from './CurrencyListSection';
 import ToolSection from './ToolSection';
+import FooterSection from '../components/FooterSection';
 
 const styles = () => ({
     wrapper: {
@@ -23,6 +24,7 @@ const MainLandingPage = props => {
         <FeatureSection />
         <CurrencyListSection />
         <ToolSection />
+        <FooterSection />
       </Fragment>
     );
 };

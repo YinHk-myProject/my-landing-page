@@ -15,9 +15,16 @@ const styles = theme => ({
     },
     cardContainer: {
         display: 'flex',
-        flexDirection: 'row',
+        //flexDirection: 'column',
         alignItems:'center',
         justifyContent: 'center',
+        '@media (max-width:  960px)': {
+            flexDirection: 'column'
+        },
+        '@media (min-width:  961px)': {
+            flexDirection: 'row'
+        },
+
     },
     cardWrapper: {
         height: '100%',
@@ -27,7 +34,10 @@ const styles = theme => ({
         alignItems:'center',
         justifyContent: 'center',
         borderRadius: 20,
-        marginRight: 55
+        marginRight: 55,
+        '@media (max-width:  960px)': {
+            marginTop: 50
+        }
     },
     CardHeader: {
         color: '#9e035e'
@@ -37,9 +47,6 @@ const styles = theme => ({
         minHeight: 200,
         padding: 30,
         borderRadius: 6
-        //display: 'flex',
-        //alignItems:'center',
-        //justifyContent: 'center',
         
     },
     title: {
@@ -87,7 +94,9 @@ const FeatureSection = props => {
            Features
         </Typography>
         <div className={classes.cardContainer}>
+       
         {featuresList.map(item => 
+
           <Card className={classes.cardWrapper} sx={{ maxWidth: 345 }}>
             <CardHeader className={classes.CardHeader} title={item.title} titleTypographyProps={{fontWeight: 580, fontFamily: '"Secular One", sans-serif' }} />
             <CardContent className={classes.cardContent}>
@@ -98,7 +107,7 @@ const FeatureSection = props => {
                     {item.description}
                 </Typography>
             </CardContent>
-          </Card> 
+          </Card>
         )}
         </div>
       </div>

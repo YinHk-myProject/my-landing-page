@@ -1,24 +1,26 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Grid, 
     Typography, 
-    Card, 
-    Button, 
-    Hidden,
-    Divider, 
-    CardHeader,
-    CardContent } from "@mui/material";
+    Button } from "@mui/material";
 import { withStyles } from "@mui/styles";
 
 import WaveBorder from "../components/WaveBorder";
 
-const styles = (theme) => ({
+const styles = theme => ({
     waveBorder: {
-      paddingTop: theme.spacing(9),
-      //borderStyle: 'dotted'
+      paddingTop: theme.spacing(9)
     },
     wrapper: {
-        height: 600,
+      //borderStyle: 'solid',
+      width: '100%',
+      minHeight: 650,
+      marginTop: 50,
+      display: 'flex', 
+      flexDirection: 'column',
+      //justifyContent: 'end',
+      background: 'rgba(36, 62, 99, 1)',
+      paddingTop: 50
     },
     cardWrapper: {
         height: '100%',
@@ -31,7 +33,7 @@ const styles = (theme) => ({
     cardContent: {
         //borderStyle: 'dotted',
         width: '90%',
-        minHeight: 380,
+        minHeight: 400,
         display: 'flex',
         alignItems:'center',
         justifyContent: 'center',
@@ -39,17 +41,29 @@ const styles = (theme) => ({
         borderRadius: 6
     },
     button: { 
-        width: '50%',
-        height: 50
+        width: '80%',
+        height: 50,
+        borderRadius: 25,
+        backgroundColor: 'rgba(34, 93, 171, 1)'
     },
     image: {
+        marginTop: 30,
         width: '100%',
         borderRadius: 50
     },
     freetext: {
-      color: "textPrimary"
+      color: "#FFFFFF"
+    },
+    imageContainer: {
+      '@media (max-width:  960px)': {
+        marginTop: 20,
+        width: '30%'
+      },
+      '@media (min-width:  961px)': {
+        marginLeft: 10,
+        width: '80%'
+      },
     }
-    
 });
 
 
@@ -58,16 +72,11 @@ const HeadSection = props => {
   
   return (
     <div className={classes.wrapper}>
-     <Card className={classes.cardWrapper} x={{ maxWidth: 345 }}>
-      <CardContent className={classes.cardContent}>
-        <Grid container direction="row" justifyContent="center">
-         <Grid item xs={6}>
-            <Card> 
-             <CardHeader title={
-                <Typography gutterBottom variant="h3" component="h2" color="red">
+      <Grid container space={2} direction="row" justifyContent="center">
+         <Grid item xs={12} sm={12} md={6} lg={6} sx={{padding: 10}}>
+                <Typography gutterBottom variant="h3" component="h2" color='rgba(34, 93, 191, 1)' fontWeight="bold">
                     Currency exchange rate
-                </Typography>} />
-             <CardContent>
+                </Typography>
                 <Typography gutterBottom className={classes.freetext} variant="h5"  component="p" >
                   Looking for currency rate ? here is the right place!
                 </Typography>
@@ -76,21 +85,17 @@ const HeadSection = props => {
                   Looking for historical exchange rate? This website can provide you with past 
                   exchange rates from 2000. 
                 </Typography>
-                <Button variant="contained" color="secondary" className={classes.button} style={{marginTop: 55}}>Explore</Button>
-             </CardContent>
-            </Card>
+                <Button variant="contained"  className={classes.button} style={{marginTop: 55}}>Get start</Button> 
          </Grid>
-         <Grid item xs={6}>
-            <img src={require('../images/cash.jpg')} alt='cash jpg' className={classes.image}/>
+         <Grid item xs={12} sm={12} md={6} lg={6} sx={{padding: 3}}>
+            {<img src={require('../images/coins.jpg')} alt='cash jpg' className={classes.image}/>}
          </Grid>
-        </Grid>
-      </CardContent>
-     </Card>
+      </Grid>
      <WaveBorder 
-        upperColor={theme.palette.blueTheme.electric}
-        waveColor1={theme.palette.blueTheme.light}
-        waveColor2={theme.palette.blueTheme.royal}
-        waveColor3={theme.palette.blueTheme.maya}
+        upperColor= 'rgba(36, 62, 99, 1)'
+        waveColor1= 'rgba(213, 242, 48, .9)'
+        waveColor2= 'rgba(98, 230, 245, .8)'
+        waveColor3= 'rgba(255, 145, 237, .9)'
         waveColor4= '#FFFFFF'
         className={classes.waveBorder}
      />
