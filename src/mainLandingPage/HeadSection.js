@@ -41,7 +41,7 @@ const styles = theme => ({
         borderRadius: 6
     },
     button: { 
-        width: '80%',
+        width: '50%',
         height: 50,
         borderRadius: 25,
         backgroundColor: 'rgba(34, 93, 171, 1)'
@@ -85,7 +85,9 @@ const HeadSection = props => {
                   Looking for historical exchange rate? This website can provide you with past 
                   exchange rates from 2000. 
                 </Typography>
-                <Button variant="contained"  className={classes.button} style={{marginTop: 55}}>Get start</Button> 
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                  <Button variant="contained"  className={classes.button} style={{marginTop: 55}}>Get start</Button> 
+                </div> 
          </Grid>
          <Grid item xs={12} sm={12} md={6} lg={6} sx={{padding: 3}}>
             {<img src={require('../images/coins.jpg')} alt='cash jpg' className={classes.image}/>}
