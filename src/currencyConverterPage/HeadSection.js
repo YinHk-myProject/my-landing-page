@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from "prop-types";
-import { Grid, Typography, Card, Button, IconButton } from "@mui/material";
+import { Grid, Typography, Card, Button, IconButton, TextField, Box } from "@mui/material";
 import { BsArrowLeftRight } from 'react-icons/bs';
 import { withStyles } from "@mui/styles"; 
+import axios from "axios";
 
 import Data from '../Data';
 import WaveBorder from "../components/WaveBorder";
 import DropDown from '../components/DropDown';
-//import TextInputBox from '../components/TextInputBox';
+import InputBox from '../components/InputBox';
+//import TextInput from '../components/TextInput';
 
 
 const styles = theme => ({
@@ -37,7 +39,8 @@ const styles = theme => ({
     labelText: {
       color: '#0260a8',
       fontWeight: theme.title.titleFontWeight,
-      fontFamily: theme.title.titleFontFamily
+      fontFamily: theme.title.titleFontFamily,
+      marginTop: 15
     },
     dropDown: {
       width: '100%',
@@ -45,23 +48,46 @@ const styles = theme => ({
     },
     image: {
       width: 60
+    },
+    inputbox: {
+      width: '100%',
+      display: 'flex',
+      'justify-content': 'center',
+      marginBottom: 15
+    },
+    button: {
+      width: '60%'
     }
 });
 
 
 const HeadSection = props => {
   const { classes, theme } = props;
-  //const [stateObj, setStateObj] = useState({ selectedOption: '', selectedList: null });
+  const [stateObj, setStateObj] = useState({from: null, to: null, amount: null});
   const [optionsList, setOptionList] = useState([]); 
   
 
   useEffect(() => {
     let list = [];
     Data.map(item => list.push({ 
-      value: item.countryAbbrev, 
+      value: item.currencyCode, 
       label: <div style={{display: 'flex', 'justify-content': 'space-around'}}><img src={item.flagURL} alt="flag.png" style={{marginRight: 50}}/>{item.currencyCode}</div> }) );  
     setOptionList(list);
   }, []);
+
+  const updateValueObj = (type, val) => {
+    type=="conrrency_converter_base" && setStateObj({...stateObj, from: val});
+    type=="conrrency_converter_target" && setStateObj({...stateObj, to: val});
+    type=="conrrency_converter_amount" && setStateObj({...stateObj, amount: val});
+  };
+
+  const apiCall =  async () => { 
+    let res = await axios.get(`http://localhost:5000/converter?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`);
+    let { data } = res.data;
+    console.log(data);
+  };
+
+  const handleClick = () => apiCall();
   
   return (
     <div className={classes.wrapper}>
@@ -75,38 +101,49 @@ const HeadSection = props => {
                 <Grid item xs={12} sm={12} md={5}>
                   <label className={classes.label}>
                     <Typography className={classes.labelText} gutterBottom variant="h6" component="p">
-                      From
+                      From {}
                     </Typography>
                   </label>
                   <DropDown 
                     className={classes.dropDown}
                     id="conrrency_converter_base"
                     options={optionsList}
+                    updateValueObj={updateValueObj}
                   />
-                  {/*<TextInputBox 
-                    id="currency_converter_amount"
-                    type='input_number'
-                    editMode={true}
-                    maxLength={10}
-                  />*/}
+                  <InputBox 
+                    className={classes.inputbox} 
+                    id="conrrency_converter_amount" 
+                    type="number" 
+                    label="Amount" 
+                    editMode={true} 
+                    maxLength={10} 
+                    updateValueObj={updateValueObj}
+                  />
                 </Grid>
-                <Grid item xs={12} sm={12} md={2} sx={{  display: 'flex', 'justify-content': 'center'}}>
-                  <IconButton size="large" >
-                    {/*<img src={require('../images/arrow.png')} alt='arrow jpg' className={classes.image}/>*/}
+                <Grid item xs={12} sm={12} md={2} sx={{display: 'flex', 'justify-content': 'center', alignItems: 'center'}}>
                     <BsArrowLeftRight size='50' color='#183C48' stroke-width='1'/>
-                  </IconButton>
                 </Grid> 
                 <Grid item xs={12} sm={12} md={5}>
                   <label className={classes.label}>
                     <Typography className={classes.labelText} gutterBottom variant="h6" component="p">
-                      To
+                      To {}
                     </Typography>
                   </label>
                   <DropDown 
                     className={classes.dropDown}
                     id="conrrency_converter_target"
                     options={optionsList}
+                    updateValueObj={updateValueObj}
                   />
+                  <Box style={{display: 'flex', 'justify-content': 'center', marginBottom: 25}}>
+                    <Button 
+                      variant="contained" 
+                      className={classes.button}
+                      onClick={handleClick}
+                    >
+                      Convert
+                    </Button>
+                  </Box>
                 </Grid>
               </Grid>
            </Card>

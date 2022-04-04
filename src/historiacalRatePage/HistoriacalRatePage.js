@@ -3,6 +3,7 @@ import { withStyles } from "@mui/styles";
 
 import NavBar from '../components/NavBar';
 import HeadSection from './HeadSection';
+import ContentSection from './ContentSection';
 import FooterSection from '../components/FooterSection';
 
 const styles = () => ({
@@ -18,6 +19,7 @@ const HistoriacalRatePage = props => {
       <Fragment>
         <NavBar />
         <HeadSection />
+        <ContentSection />
         <FooterSection />
       </Fragment>
     );

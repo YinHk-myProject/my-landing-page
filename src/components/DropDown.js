@@ -11,8 +11,6 @@ const DropDown = props => {
         control: (css, state) => ({
           ...css,
           width: '60%',
-          //height: 20,
-          //background: color.cimsBackgroundColor,
           '&:hover': {
             borderColor: state.isFocused ? '#1565c0':'#424242'
           },
@@ -28,30 +26,19 @@ const DropDown = props => {
         }),
         input: base => ({
           ...base,
-          //color: color.cimsTextColor,
           '& input': {
               font: 'inherit'
-          },
-          //display: 'flex',
-          //padding: '0 0 8px 8px',
-          //height: '100%',
-          //fontSize: font.fontSize
+          }
         }),
         placeholder: provided => ({
           ...provided,
           fontSize: 10,
           width: '100%',
           float: 'left'
-          //height: '100%'
-          //fontFamily: font.fontFamily,
-          //color: color.cimsPlaceholderColor,
-          //backgroundColor: color.cimsBackgroundColor
         }),
         singleValue: provided => ({
           ...provided,
           paddingLeft: 8,
-          //fontSize: font.fontSize,
-          //fontFamily: font.fontFamily,
           overflow: 'hidden',
           textOverflow: 'ellipsis',
           whiteSpace: 'nowrap',
@@ -65,9 +52,7 @@ const DropDown = props => {
           alignItems: 'center',
           overflow: 'hidden',
           color:'black',
-          height: '100%',
-          //borderStyle: 'solid',
-          //backgroundColor: color.cimsBackgroundColor
+          height: '100%'
         }),
         menu: provided => ({
           ...provided,
@@ -78,27 +63,27 @@ const DropDown = props => {
         menuList: provided => ({
           ...provided,
           width: '100%',
-          borderRadius: 25,
-          //fontSize: font.fontSize,
-          //fontFamily: font.fontFamily,
-          //color: color.cimsTextColor,
-          //backgroundColor: color.cimsBackgroundColor
-        }),
-        paper: provided => ({
-          ...provided,
-          //backgroundColor: 'rgba(59, 59, 59, .5)'
+          borderRadius: 25
         }),
         option: (provided, state) => {
           return {
             ...provided,
             backgroundColor: state.isSelected ? '#ffccaa' : null,
-            //color: color.cimsTextColor,
             '&:hover': {
               backgroundColor: state.isSelected ? '#28518f':'#e0e0e0'
             }
           };
         }
-      };
+    };
+
+    const handleChange = e => {
+      let { updateValueObj } = props;
+      if(e!=null) 
+        setStateObj({ ...stateObj, selectedOption: e.value, selectedList: e });
+
+      (id=="conrrency_converter_base") && updateValueObj('conrrency_converter_base',e.value);
+      (id=="conrrency_converter_target") && updateValueObj('conrrency_converter_target',e.value);
+    }
 
 
     return (
@@ -109,6 +94,7 @@ const DropDown = props => {
             value={stateObj.selectedList}
             isClearable
             placeholder=""
+            onChange={handleChange}
             menuPosition="fixed"
             styles={selectStyles}  
             menuPlacement="auto"

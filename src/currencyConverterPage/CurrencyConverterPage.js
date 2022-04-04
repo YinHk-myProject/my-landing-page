@@ -3,7 +3,8 @@ import { withStyles } from "@mui/styles";
 
 import NavBar from '../components/NavBar';
 import HeadSection from './HeadSection';
-import FooterSection from '../components/FooterSection';
+import ContentSection from './ContentSection';
+import FooterSection from '../components/FooterSection'; 
 
 const styles = () => ({
     wrapper: {
@@ -18,6 +19,7 @@ const CurrencyConverterPage = props => {
       <Fragment>
         <NavBar />
         <HeadSection />
+        <ContentSection />
         <FooterSection />
       </Fragment>
     );
