@@ -78,11 +78,16 @@ const DropDown = props => {
 
     const handleChange = e => {
       let { updateValueObj } = props;
-      if(e!=null) 
+      if(e!=null) {
         setStateObj({ ...stateObj, selectedOption: e.value, selectedList: e });
-
-      (id=="conrrency_converter_base") && updateValueObj('conrrency_converter_base',e.value);
-      (id=="conrrency_converter_target") && updateValueObj('conrrency_converter_target',e.value);
+        (id=="conrrency_converter_base") && updateValueObj('conrrency_converter_base',e.value);
+        (id=="conrrency_converter_target") && updateValueObj('conrrency_converter_target',e.value);
+      } else {
+        setStateObj({ ...stateObj, selectedOption: '', selectedList: null });
+        (id=="conrrency_converter_base") && updateValueObj('conrrency_converter_base',null);
+        (id=="conrrency_converter_target") && updateValueObj('conrrency_converter_target',null);
+      } 
+       
     }
 
 
@@ -92,6 +97,7 @@ const DropDown = props => {
             id={id}
             options={options}
             value={stateObj.selectedList}
+            isSearchable={false}
             isClearable
             placeholder=""
             onChange={handleChange}

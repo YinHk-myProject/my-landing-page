@@ -16,6 +16,7 @@
     "cross-env": "^7.0.3",
     "formik": "^2.2.9",
     "framer-motion": "^6.2.8",
+    "http-proxy-middleware": "^2.0.4",
     "lodash": "^4.17.21",
     "particles.js": "^2.0.0",
     "react": "^17.0.2",

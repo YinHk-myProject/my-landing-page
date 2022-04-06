@@ -3,14 +3,15 @@ import PropTypes from "prop-types";
 import { Grid, Typography, Card, Button, IconButton, TextField, Box } from "@mui/material";
 import { BsArrowLeftRight } from 'react-icons/bs';
 import { withStyles } from "@mui/styles"; 
-import axios from "axios";
+//import axios from "axios";
+
 
 import Data from '../Data';
 import WaveBorder from "../components/WaveBorder";
 import DropDown from '../components/DropDown';
 import InputBox from '../components/InputBox';
 //import TextInput from '../components/TextInput';
-
+import Axios from '../components/Axios';
 
 const styles = theme => ({
     waveBorder: {
@@ -76,18 +77,25 @@ const HeadSection = props => {
   }, []);
 
   const updateValueObj = (type, val) => {
-    type=="conrrency_converter_base" && setStateObj({...stateObj, from: val});
-    type=="conrrency_converter_target" && setStateObj({...stateObj, to: val});
-    type=="conrrency_converter_amount" && setStateObj({...stateObj, amount: val});
+    if(type=="conrrency_converter_base") 
+      setStateObj({...stateObj, from: val});
+    else if(type=="conrrency_converter_target")
+      setStateObj({...stateObj, to: val});
+    else if(type=="conrrency_converter_amount") 
+      setStateObj({...stateObj, amount: val});
   };
 
-  const apiCall =  async () => { 
-    let res = await axios.get(`http://localhost:5000/converter?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`);
-    let { data } = res.data;
-    console.log(data);
-  };
+  const apiCall = Axios(`http://localhost:3000/converter?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`);
 
-  const handleClick = () => apiCall();
+  const handleClick = () => {
+    if(stateObj.from!=null && stateObj.to!=null && stateObj.amount!='') {
+      if(stateObj.from!=stateObj.to) {
+          apiCall();
+      } else window.alert("Please choose different currency");
+    } else if(stateObj.from!=null || stateObj.to!=null || stateObj.amount!='') {
+       window.alert("invalid input");
+    };
+  }
   
   return (
     <div className={classes.wrapper}>
@@ -101,7 +109,7 @@ const HeadSection = props => {
                 <Grid item xs={12} sm={12} md={5}>
                   <label className={classes.label}>
                     <Typography className={classes.labelText} gutterBottom variant="h6" component="p">
-                      From {}
+                      From {stateObj.from!=null? stateObj.from:''}
                     </Typography>
                   </label>
                   <DropDown 
@@ -126,7 +134,7 @@ const HeadSection = props => {
                 <Grid item xs={12} sm={12} md={5}>
                   <label className={classes.label}>
                     <Typography className={classes.labelText} gutterBottom variant="h6" component="p">
-                      To {}
+                      To {stateObj.to!=null? stateObj.to:''}
                     </Typography>
                   </label>
                   <DropDown 
