@@ -54,7 +54,9 @@ const styles = theme => ({
     inputbox: {
       width: '100%',
       display: 'flex',
+      flexDirection: 'column',
       'justify-content': 'center',
+      alignItems: 'center',
       marginBottom: 15
     },
     button: {

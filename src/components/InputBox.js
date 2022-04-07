@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { TextField, Tooltip } from "@mui/material";
+import React, { useState } from 'react';
+import { TextField, Tooltip, FormHelperText } from "@mui/material";
 import { makeStyles } from "@mui/styles"; 
 
 const useStyles = makeStyles(() => ({
@@ -13,7 +13,13 @@ const useStyles = makeStyles(() => ({
     },
     input: {
       color: "white"
-    }
+    },
+    helperTextError: {
+      marginTop: 0,
+      fontSize: '12px !important',
+      padding: '0 !important'
+ 
+    },
 }));
 
 const InputBox = props => {
@@ -23,14 +29,27 @@ const InputBox = props => {
     
     
     const handleChange = e => {
-      setStateObj({...stateObj, inputValue: e.target.value});
+      setStateObj({ ...stateObj, inputValue: e.target.value });
     };
 
     const handleBlur = e => {
       let { updateValueObj } = props;
       //error checking here
-      (id=="conrrency_converter_amount") && updateValueObj('conrrency_converter_amount',stateObj.inputValue);
+      let reg = new RegExp('^[0-9]');
+
+      if(stateObj.inputValue!='') {
+        if(reg.test(stateObj.inputValue)) {
+          (id=="conrrency_converter_amount") && updateValueObj('conrrency_converter_amount',stateObj.inputValue);
+          setStateObj({ ...stateObj, errorFlag: false });
+        }else 
+          setStateObj({ ...stateObj, errorFlag: true });
+      }else setStateObj({ ...stateObj, errorFlag: false });
+      
     };
+
+    const displayError = () =>
+     (stateObj.errorFlag?
+      <FormHelperText error className={classes.helperTextError}>Invalid Entry</FormHelperText> : null);
     
     return (
         <div className={className} {...rest}>
@@ -48,6 +67,7 @@ const InputBox = props => {
                 inputProps={{ maxLength: maxLength }}
             /> 
           </Tooltip>
+          {displayError()}
         </div>
     );
 };
