@@ -10,6 +10,7 @@ const CurrencyConverterPage = props => {
 
     const updataData = valObj => {
       setData(valObj);
+      console.log(data);
     }
 
     return (

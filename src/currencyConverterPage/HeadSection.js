@@ -3,15 +3,16 @@ import PropTypes from "prop-types";
 import { Grid, Typography, Card, Button, IconButton, TextField, Box } from "@mui/material";
 import { BsArrowLeftRight } from 'react-icons/bs';
 import { withStyles } from "@mui/styles"; 
-//import axios from "axios";
+import axios from "axios";
 
 
 import Data from '../Data';
 import WaveBorder from "../components/WaveBorder";
 import DropDown from '../components/DropDown';
 import InputBox from '../components/InputBox';
+import { isNull } from 'lodash';
 //import TextInput from '../components/TextInput';
-import Axios from '../components/Axios';
+//import Axios from '../components/Axios';
 
 const styles = theme => ({
     waveBorder: {
@@ -65,8 +66,8 @@ const styles = theme => ({
 const HeadSection = props => {
   const { classes, theme } = props;
   const [stateObj, setStateObj] = useState({from: null, to: null, amount: null});
-  const [optionsList, setOptionList] = useState([]); 
-  
+  const [optionsList, setOptionList] = useState([]);
+  const [responseObj, setResponseObj] = useState(null); 
 
   useEffect(() => {
     let list = [];
@@ -85,9 +86,23 @@ const HeadSection = props => {
       setStateObj({...stateObj, amount: val});
   };
 
-  const apiCall = Axios(`http://localhost:3000/converter?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`);
+  //const apiCall = Axios(`http://localhost:3000/converter?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`);
+  const url = `http://localhost:3000/converter?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`;
+  
+  async function apiCall() { 
+    let res = await axios.get(url);
+    let { data } = res;
+    console.log(data);
+    setResponseObj(data);
+  };
 
-  const handleClick = () => {
+  useEffect(() => {
+    let { updataData } = props;
+    updataData(responseObj);
+  }, [responseObj]);
+
+  const handleClick = async () => {
+
     if(stateObj.from!=null && stateObj.to!=null && stateObj.amount!='') {
       if(stateObj.from!=stateObj.to) {
           apiCall();
