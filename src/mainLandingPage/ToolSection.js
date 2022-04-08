@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
 import { useNavigate } from 'react-router-dom';
 import { withStyles } from "@mui/styles";
@@ -88,19 +88,18 @@ const toolList = [
 
 const ToolSection = props => {
     const { classes } = props;
-    //const [page, setPage] = useState('main');
-
+    
     const navigate = useNavigate();
     
     const handleRedirectPage = page => {
-        page==toolList[0].title && navigate('/currency_converter', { replace: true });
-        page==toolList[1].title && navigate('/historical_currency_converter', { replace: true });
-        page==toolList[2].title && navigate('/rates', { replace: true });
-        page==toolList[3].title && navigate('/historical_rates', { replace: true });
+        page==toolList[0].title && navigate('/currency_converter');
+        page==toolList[1].title && navigate('/historical_currency_converter');
+        page==toolList[2].title && navigate('/rates');
+        page==toolList[3].title && navigate('/historical_rates');
     }
    
     return (
-      <div className={classes.wrapper}>
+      <div className={classes.wrapper} id='tool'>
         <Typography className={classes.title} gutterBottom >
            Tool
         </Typography>
@@ -120,7 +119,7 @@ const ToolSection = props => {
                 <Button 
                     className={classes.buttonText} 
                     size="large"
-                    onClick={handleRedirectPage(item.title)}
+                    onClick={()=>handleRedirectPage(item.title)}
                 >
                     Click here
                 </Button>

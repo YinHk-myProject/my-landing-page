@@ -68,7 +68,13 @@ const styles = theme => ({
 
 
 const HeadSection = props => {
-  const { classes, theme } = props;
+  const { classes } = props;
+
+
+  const scrollToToolSection = () => {
+    const anchor =  document.getElementById('tool');
+    anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
   
   return (
     <div className={classes.wrapper}>
@@ -86,7 +92,14 @@ const HeadSection = props => {
                   exchange rates from 2000. 
                 </Typography>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
-                  <Button variant="contained"  className={classes.button} style={{marginTop: 55}}>Get start</Button> 
+                  <Button 
+                    className={classes.button}
+                    variant="contained"   
+                    style={{marginTop: 55}}
+                    onClick={() => scrollToToolSection()}
+                  >
+                    Get start
+                  </Button> 
                 </div> 
          </Grid>
          <Grid item xs={12} sm={12} md={6} lg={6} sx={{padding: 3}}>
