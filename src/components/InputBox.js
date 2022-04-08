@@ -43,7 +43,10 @@ const InputBox = props => {
           setStateObj({ ...stateObj, errorFlag: false });
         }else 
           setStateObj({ ...stateObj, errorFlag: true });
-      }else setStateObj({ ...stateObj, errorFlag: false });
+      }else {
+        setStateObj({ ...stateObj, errorFlag: false });
+        (id=="conrrency_converter_amount") && updateValueObj('conrrency_converter_amount',stateObj.inputValue);
+      } 
       
     };
 

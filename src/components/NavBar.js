@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { AppBar, Toolbar, Typography, Button, Hidden, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, Menu, MenuItem } from "@mui/material";
 import withStyles from '@mui/styles/withStyles';
+import { useNavigate } from 'react-router-dom';
 
 const styles = theme => ({
     wrapper: {
@@ -78,6 +79,17 @@ const TypographyList = classes =>
 
 const NavBar = props => {
     const { classes } = props;
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const navigate = useNavigate();
+
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
 
     return (
       <div className={classes.wrapper}>
@@ -86,11 +98,37 @@ const NavBar = props => {
               {TypographyList(classes)}
               <div>
                 <Button
+                  id='menuButton'
                   className={classes.menuButtonText}
                   size="large"
+                  aria-controls={open? 'menu' : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open? 'true' : undefined}
+                  onClick={handleClick}
                 >
                   Menu
                 </Button>
+                <Menu
+                  id='menu'
+                  aria-labelledby='menuButton'
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                >
+                  <MenuItem onClick={()=>navigate('/')}>Home</MenuItem>
+                  <MenuItem onClick={()=>navigate('/currency_converter')}>Currency converter</MenuItem>
+                  <MenuItem onClick={()=>navigate('/historical_currency_converter')}>Historical currency converter</MenuItem>
+                  <MenuItem onClick={()=>navigate('/rates')}>Rates</MenuItem>
+                  <MenuItem onClick={()=>navigate('/historical_rates')}>Historical rates</MenuItem>
+                </Menu>
                 <Button
                   className={classes.menuButtonText}
                   size="large"

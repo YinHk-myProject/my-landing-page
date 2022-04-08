@@ -4,6 +4,7 @@ import { Grid, Typography, Card, Button, IconButton, TextField, Box } from "@mui
 import { BsArrowLeftRight } from 'react-icons/bs';
 import { withStyles } from "@mui/styles"; 
 import axios from "axios";
+import classnames from 'classnames';
 
 
 import Data from '../Data';
@@ -88,7 +89,6 @@ const HeadSection = props => {
       setStateObj({...stateObj, amount: val});
   };
 
-  //const apiCall = Axios(`http://localhost:3000/converter?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`);
   const url = `http://localhost:3000/converter?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`;
   
   async function apiCall() { 
@@ -105,7 +105,7 @@ const HeadSection = props => {
 
   const handleClick = async () => {
 
-    if(stateObj.from!=null && stateObj.to!=null && stateObj.amount!='') {
+    if(stateObj.from!=null && stateObj.to!=null && stateObj.amount!='' && stateObj.amount!=null ) {
       if(stateObj.from!=stateObj.to) {
           apiCall();
       } else window.alert("Please choose different currency");

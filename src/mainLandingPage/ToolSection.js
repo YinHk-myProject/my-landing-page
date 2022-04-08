@@ -72,7 +72,7 @@ const toolList = [
         image: 'coin2.jpg'
     },
     {
-        title: 'Past currency converter',
+        title: 'Historical currency converter',
         image: 'coins2.jpg'
     },
     {

@@ -56,7 +56,7 @@ const ContentSection = props => {
               <Typography gutterBottom variant="body">{data.updated_date}</Typography>
             </div>
 
-          </Card>:data.status)
+          </Card>:<Typography gutterBottom variant="h3" component="p" sx={{marginRight: 3}}>Oops, Something Went Wrong!</Typography>)
           : <Card className={classes.cardWrapper}></Card>}
       </div>
     );
