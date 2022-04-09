@@ -15,4 +15,18 @@ module.exports = function(app) {
       changeOrigin: true,
     })
   );
+  app.use(
+    '/past_converter',
+    createProxyMiddleware({
+      target: 'http://Yinhkcurrencysvc-env.eba-pypgtkpm.us-west-2.elasticbeanstalk.com',
+      changeOrigin: true,
+    })
+  );
+  app.use(
+    '/latest_rates',
+    createProxyMiddleware({
+      target: 'http://Yinhkcurrencysvc-env.eba-pypgtkpm.us-west-2.elasticbeanstalk.com',
+      changeOrigin: true,
+    })
+  );
 };

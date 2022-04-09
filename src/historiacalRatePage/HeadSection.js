@@ -88,7 +88,7 @@ const HeadSection = props => {
 
   const url = `http://localhost:3000/historical_rates/${stateObj.date}?base=${stateObj.base}`;
 
-  async function apiCall() { // /historical_rates/2018-05-20?base=JPY
+  async function apiCall() { 
     let res = await axios.get(url);
     let { data } = res;
     console.log(data);
@@ -157,7 +157,7 @@ const HeadSection = props => {
         </Grid>
        <WaveBorder 
           upperColor= 'rgba(36, 62, 99, 1)'
-          waveColor1= 'rgba(213, 242, 48, .9)'
+          waveColor1= 'rgba(213, 242, 48, .9)'npm start
           waveColor2= 'rgba(98, 230, 245, .8)'
           waveColor3= 'rgba(255, 145, 237, .9)'
           waveColor4= '#FFFFFF'

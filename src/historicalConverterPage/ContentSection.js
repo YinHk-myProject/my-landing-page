@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Grid, Typography, Card } from "@mui/material";
+import { Grid, Typography, Card, Table, TableContainer, TableBody, TableCell, TableHead, TableRow, Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    cardWrapper: {
+    paperWrapper: {
         width: '80%',
         minHeight: 850,
         marginTop: 50,
@@ -20,14 +20,42 @@ const useStyles = makeStyles(() => ({
 }));
 
 const ContentSection = props => {
-    const { result } = props;
+    const { data } = props;
     const classes = useStyles();
+
+    const currencyRate = rate => {
+      for(const key in rate) {
+        return (
+          <TableRow
+            key={key}
+          >
+            <TableCell component="th" scope="row">{key}</TableCell>
+            <TableCell align="right">{rate[key]}</TableCell>
+          </TableRow>
+        );
+      }
+    }
 
     return (
       <div className={classes.wrapper}>
-        <Card className={classes.cardWrapper}>
-          {result? <Typography>Hello, result here!</Typography>:<Typography gutterBottom variant="h2" component="p">No result</Typography>}
-        </Card>
+        <Paper className={classes.paperWrapper}>
+          {data? (data.success==true?
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 150 }} aria-label="rates table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Currency</TableCell>
+                    <TableCell align="right">Rate</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {currencyRate(data.rates.urrencyRate)}
+                </TableBody>
+              </Table>
+            </TableContainer>:<Typography gutterBottom variant="h3" component="p" sx={{marginRight: 3}}>Oops, Something Went Wrong!</Typography>)
+            :<Typography gutterBottom variant="h3" component="p" sx={{marginRight: 3}}>Oops, Something Went Wrong!</Typography>
+          } 
+        </Paper>
       </div>
     );
 };
