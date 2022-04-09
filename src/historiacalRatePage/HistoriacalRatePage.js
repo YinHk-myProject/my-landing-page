@@ -14,12 +14,18 @@ const styles = () => ({
 });
 
 const HistoriacalRatePage = props => {
-    const { classes } = props;
+    const [data, setData] = useState(null);
+
+    const updataData = valObj => {
+      setData(valObj);
+      console.log(data);
+    }
+
     return (
       <Fragment>
         <NavBar />
-        <HeadSection />
-        <ContentSection />
+        <HeadSection updataData={updataData}/>
+        <ContentSection data={data}/>
         <FooterSection />
       </Fragment>
     );

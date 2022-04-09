@@ -1,18 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from "prop-types";
-import { Grid, Typography, Card, Button, Box, TextField } from "@mui/material";
+import { Grid, Typography, Card, Button, Box } from "@mui/material";
 import { withStyles } from "@mui/styles"; 
-//import DatePicker from "react-datepicker";
-import DatePicker from '@mui/lab/DatePicker';
-import MobileDatePicker from '@mui/lab/MobileDatePicker';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-//import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
 import Data from '../Data';
 import WaveBorder from "../components/WaveBorder";
 import DropDown from '../components/DropDown';
-
+import DateInputBox from '../components/DateInputBox';
 
 
 const styles = theme => ({
@@ -58,32 +53,66 @@ const styles = theme => ({
     },
     button: {
       width: '60%'
+    },
+    dateInput: {
+      display: 'flex',
+      'justify-content': 'center',
+      marginBottom: 15
     }
 });
 
 
 const HeadSection = props => {
   const { classes } = props;
-  const [stateObj, setStateObj] = useState({ date: null });
-  //const [selectedDate, setSelectedDate] = useState(new Date()); //.toISOString().split('T')[0]
+  const [stateObj, setStateObj] = useState({ base: null, date: null });
   const [optionsList, setOptionList] = useState([]); 
-  
+  const [responseObj, setResponseObj] = useState(null); 
+
+
+  const updateValueObj = (type, val) => {
+    if(type=="historical_rate_base_currency") 
+      setStateObj({...stateObj, base: val});
+    else if(type=="historical_rate_date_picker") {
+      setStateObj({...stateObj, date: val});
+    }
+  };
 
   useEffect(() => {
     let list = [];
     Data.map(item => list.push({ 
-      value: item.countryAbbrev, 
+      value: item.currencyCode, 
       label: <div style={{display: 'flex', 'justify-content': 'space-around'}}><img src={item.flagURL} alt="flag.png" style={{marginRight: 50}}/>{item.currencyCode}</div> }) );  
     setOptionList(list);
   }, []);
 
-  const handleDateChange = val => {
-    setStateObj({ ...stateObj, date: val });
+
+  const url = `http://localhost:3000/historical_rates/${stateObj.date}?base=${stateObj.base}`;
+
+  async function apiCall() { // /historical_rates/2018-05-20?base=JPY
+    let res = await axios.get(url);
+    let { data } = res;
+    console.log(data);
+    setResponseObj(data);
   };
+
+  useEffect(() => {
+    let { updataData } = props;
+    updataData(responseObj);
+  }, [responseObj]);
+
+
+  const handleClick = async () => {
+    if(stateObj.base!=null && stateObj.date!=null) {
+          apiCall();
+    } else if(stateObj.base!=null || stateObj.date!=null) {
+       window.alert("invalid input");
+    };
+  }
+
   
   return (
     <div className={classes.wrapper}>
-       <LocalizationProvider dateAdapter={AdapterDateFns}>
+       
         <Grid container space={2} direction="row" justifyContent="center" sx={{minHeight:600}}>
           <Typography className={classes.typography} gutterBottom variant="h2" component="p">
             Historical exchange rates
@@ -94,13 +123,14 @@ const HeadSection = props => {
                   <Grid item xs={12} sm={12} md={6}>
                     <label className={classes.label}>
                       <Typography className={classes.labelText} gutterBottom variant="h6" component="p">
-                        Base Currency
+                        Base Currency {stateObj.base!=null? stateObj.base:''}
                       </Typography>
                     </label>
                     <DropDown 
                       className={classes.dropDown}
-                      id="conrrency_converter_base"
+                      id="historical_rate_base_currency"
                       options={optionsList}
+                      updateValueObj={updateValueObj}
                     />
                     
                   </Grid> 
@@ -110,15 +140,15 @@ const HeadSection = props => {
                         Date
                       </Typography>
                     </label>
-                    <MobileDatePicker
-                      label="Date mobile"
-                      inputFormat='yyyy/mm/dd'
-                      value={stateObj.date}
-                      onChange={handleDateChange}
-                      renderInput={ (params) => <TextField {...params} /> }
+                    <DateInputBox 
+                      className={classes.dateInput}
+                      id="historical_rate_date_picker"
+                      format="YYYY-MM-DD"
+                      maxLength={10}
+                      updateValueObj={updateValueObj}
                     />
                     <Box style={{display: 'flex', 'justify-content': 'center', marginBottom: 25}}>
-                      <Button variant="contained" className={classes.button}>GET</Button>
+                      <Button variant="contained" className={classes.button} onClick={handleClick}>GET</Button>
                     </Box>
                   </Grid>
                 </Grid>
@@ -133,7 +163,7 @@ const HeadSection = props => {
           waveColor4= '#FFFFFF'
           className={classes.waveBorder}
        />
-      </LocalizationProvider>
+     
     </div>
   );
 }
