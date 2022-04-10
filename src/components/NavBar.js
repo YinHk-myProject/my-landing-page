@@ -132,6 +132,7 @@ const NavBar = props => {
                 <Button
                   className={classes.menuButtonText}
                   size="large"
+                  href="https://github.com/YinHk-myProject/currency-app"
                 >
                   Github
                 </Button>

@@ -9,8 +9,6 @@ import Data from '../Data';
 import WaveBorder from "../components/WaveBorder";
 import DropDown from '../components/DropDown';
 import InputBox from '../components/InputBox';
-//import TextInput from '../components/TextInput';
-//import Axios from '../components/Axios';
 
 const styles = theme => ({
     waveBorder: {

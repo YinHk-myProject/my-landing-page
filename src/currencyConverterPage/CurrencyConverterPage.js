@@ -17,7 +17,7 @@ const CurrencyConverterPage = props => {
       <Fragment>
         <NavBar />
         <HeadSection updataData={updataData}/>
-        <ContentSection data={data}/>
+        <ContentSection data={data} />
         <FooterSection />
       </Fragment>
     );

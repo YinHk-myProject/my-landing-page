@@ -3,6 +3,7 @@ import { withStyles } from "@mui/styles";
 
 import NavBar from '../components/NavBar';
 import HeadSection from './HeadSection';
+import ContentSection from './ContentSection';
 import FooterSection from '../components/FooterSection';
 
 const styles = () => ({
@@ -13,11 +14,17 @@ const styles = () => ({
 });
 
 const HistoricalConverterPage = props => {
-    const { classes } = props;
+    const [data, setData] = useState(null);
+
+    const updataData = valObj => {
+      setData(valObj);
+      console.log(data);
+    }
     return (
       <Fragment>
         <NavBar />
-        <HeadSection />
+        <HeadSection updataData={updataData} />
+        <ContentSection data={data} />
         <FooterSection />
       </Fragment>
     );

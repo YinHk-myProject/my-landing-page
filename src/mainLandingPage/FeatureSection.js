@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardHeader, CardContent, Grid, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import { withStyles } from "@mui/styles";
+import { motion } from "framer-motion";
 
 const styles = theme => ({
     wrapper: {
@@ -95,18 +96,25 @@ const FeatureSection = props => {
         <div className={classes.cardContainer}>
        
         {featuresList.map(item => 
-
-          <Card className={classes.cardWrapper} sx={{ maxWidth: 345 }}>
-            <CardHeader className={classes.CardHeader} title={item.title} titleTypographyProps={{fontWeight: 580, fontFamily: '"Secular One", sans-serif' }} />
-            <CardContent className={classes.cardContent}>
-                <Typography className={classes.typography1} gutterBottom variant="h5"  component="p">
-                    {item.heading}
-                </Typography>
-                <Typography className={classes.typography2} gutterBottom variant="body"  component="p">
-                    {item.description}
-                </Typography>
-            </CardContent>
-          </Card>
+            <motion.div
+              whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 1.2}}
+            >
+                <Card className={classes.cardWrapper} sx={{ maxWidth: 345 }}>
+                    <CardHeader className={classes.CardHeader} title={item.title} titleTypographyProps={{fontWeight: 580, fontFamily: '"Secular One", sans-serif' }} />
+                    <CardContent className={classes.cardContent}>
+                        <Typography className={classes.typography1} gutterBottom variant="h5"  component="p">
+                            {item.heading}
+                        </Typography>
+                        <Typography className={classes.typography2} gutterBottom variant="body"  component="p">
+                            {item.description}
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </motion.div>
         )}
         </div>
       </div>

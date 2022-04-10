@@ -9,13 +9,21 @@ const useStyles = makeStyles(() => ({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    paperWrapper: {
-        width: '80%',
-        minHeight: 850,
-        marginTop: 50,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
+    cardWrapper: {
+      width: '80%',
+      minHeight: 600,
+      marginTop: 50,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'start'
+    },
+    textWrapper: {
+      marginTop: 10,
+      marginBottom: 20,
+      width: '70%',
+      display: 'flex',
+      flexDirection: 'row',
     }
 }));
 
@@ -37,26 +45,33 @@ const ContentSection = props => {
     }
 
     return (
-      <div className={classes.wrapper}>
-        <Paper className={classes.paperWrapper}>
-          {data? (data.success==true?
-            <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 150 }} aria-label="rates table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Currency</TableCell>
-                    <TableCell align="right">Rate</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {currencyRate(data.rates.urrencyRate)}
-                </TableBody>
-              </Table>
-            </TableContainer>:<Typography gutterBottom variant="h3" component="p" sx={{marginRight: 3}}>Oops, Something Went Wrong!</Typography>)
-            :<Typography gutterBottom variant="h3" component="p" sx={{marginRight: 3}}>Oops, Something Went Wrong!</Typography>
-          } 
-        </Paper>
-      </div>
+        <div className={classes.wrapper}>
+          {data? ( data.status="success"?
+            <Card className={classes.cardWrapper}>
+              <div className={classes.textWrapper}>
+                <Typography gutterBottom variant="h3" component="p" sx={{marginRight: 3, color: '#1f1d6b'}}>{Math.round(data.amount * 100) / 100}</Typography>
+                <Typography gutterBottom variant="h3" component="p" sx={{color: '#00192e'}}> {data.base_currency_name} =</Typography>
+              </div>
+
+              <div className={classes.textWrapper} style={{marginLeft: 50}}>
+                <Typography gutterBottom variant="h4" component="p" sx={{marginRight: 3, color: '#990c6c'}}>{data.rates.rateInfo[0].rate_for_amount}</Typography>
+                <Typography gutterBottom variant="h4" component="p">{data.rates.rateInfo[0].currency_name}</Typography>
+              </div>
+
+              <div className={classes.textWrapper} style={{marginLeft: 50}}>
+                <Typography gutterBottom variant="body" component="p" sx={{marginRight: 1}}>1 {data.base_currency_name} =</Typography>
+                <Typography gutterBottom variant="body" component="p" sx={{marginRight: 1}}>{data.rates.rateInfo[0].rate}</Typography>
+                <Typography gutterBottom variant="body" component="p">{data.rates.rateInfo[0].currency_name}</Typography>
+              </div>
+
+              <div className={classes.textWrapper} style={{marginLeft: 50}}>
+                <Typography gutterBottom variant="body" component="p" sx={{marginRight: 1}}>Date:</Typography>
+                <Typography gutterBottom variant="body">{data.updated_date}</Typography>
+              </div>
+
+            </Card>:<Typography gutterBottom variant="h3" component="p" sx={{marginRight: 3}}>Oops, Something Went Wrong!</Typography>)
+            : <Card className={classes.cardWrapper}></Card>}
+        </div>
     );
 };
 

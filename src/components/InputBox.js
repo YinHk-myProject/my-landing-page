@@ -40,12 +40,14 @@ const InputBox = props => {
       if(stateObj.inputValue!='') {
         if(reg.test(stateObj.inputValue)) {
           (id=="conrrency_converter_amount") && updateValueObj('conrrency_converter_amount',stateObj.inputValue);
+          (id=="historical_conrrency_converter_amount") && updateValueObj('historical_conrrency_converter_amount',stateObj.inputValue);
           setStateObj({ ...stateObj, errorFlag: false });
         }else 
           setStateObj({ ...stateObj, errorFlag: true });
       }else {
         setStateObj({ ...stateObj, errorFlag: false });
         (id=="conrrency_converter_amount") && updateValueObj('conrrency_converter_amount',stateObj.inputValue);
+        (id=="historical_conrrency_converter_amount") && updateValueObj('historical_conrrency_converter_amount',stateObj.inputValue);
       } 
       
     };

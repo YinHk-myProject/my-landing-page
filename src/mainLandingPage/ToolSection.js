@@ -11,6 +11,7 @@ import { Card,
     Typography,
     Button,
     Box } from "@mui/material";
+import { motion } from "framer-motion";
 
 const styles = theme => ({
     wrapper: {
@@ -107,7 +108,13 @@ const ToolSection = props => {
         <div className={classes.cardContainer}>
        
         {toolList.map(item => 
-
+          <motion.div
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.2 }
+            }}
+            whileTap={{ scale: 0.9 }}
+          >
           <Card className={classes.cardWrapper}>
             <CardMedia component="img" image={require(`../images/${item.image}`)} alt="jpg" height="140"/>
             <CardContent className={classes.cardContent}>
@@ -125,6 +132,7 @@ const ToolSection = props => {
                 </Button>
             </CardActions>
           </Card>
+         </motion.div>
         )}
         </div>
 
