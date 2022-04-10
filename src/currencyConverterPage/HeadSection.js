@@ -106,7 +106,7 @@ const HeadSection = props => {
       if(stateObj.from!=stateObj.to) {
           apiCall();
       } else window.alert("Please choose different currency");
-    } else if(stateObj.from!=null || stateObj.to!=null || stateObj.amount!='') {
+    } else if(stateObj.from==null || stateObj.to==null || stateObj.amount=='') {
        window.alert("invalid input");
     };
   }

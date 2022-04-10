@@ -104,7 +104,7 @@ const HeadSection = props => {
   const handleClick = async () => {
     if(stateObj.base!=null && stateObj.date!=null) {
           apiCall();
-    } else if(stateObj.base!=null || stateObj.date!=null) {
+    } else if(stateObj.base==null || stateObj.date==null) {
        window.alert("invalid input");
     };
   }

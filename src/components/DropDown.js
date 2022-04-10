@@ -83,11 +83,13 @@ const DropDown = props => {
         (id=="conrrency_converter_base") && updateValueObj('conrrency_converter_base',e.value);
         (id=="conrrency_converter_target") && updateValueObj('conrrency_converter_target',e.value);
         (id=="historical_rate_base_currency") && updateValueObj('historical_rate_base_currency',e.value);
+        (id=="latest_rate_base_currency") && updateValueObj('latest_rate_base_currency',e.value);
       } else {
         setStateObj({ ...stateObj, selectedOption: '', selectedList: null });
         (id=="conrrency_converter_base") && updateValueObj('conrrency_converter_base',null);
         (id=="conrrency_converter_target") && updateValueObj('conrrency_converter_target',null);
         (id=="historical_rate_base_currency") && updateValueObj('historical_rate_base_currency',null);
+        (id=="latest_rate_base_currency") && updateValueObj('latest_rate_base_currency',null);
       } 
        
     }
