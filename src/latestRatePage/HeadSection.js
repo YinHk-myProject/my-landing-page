@@ -82,7 +82,7 @@ const HeadSection = props => {
     setOptionList(list);
   }, []);
 
-  const url = `http://localhost:3000/latest_rates?base=${stateObj.base}`;
+  const url = `/latest_rates?base=${stateObj.base}`;
 
   async function apiCall() { 
     let res = await axios.get(url);

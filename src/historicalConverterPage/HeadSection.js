@@ -92,7 +92,7 @@ const HeadSection = props => {
       setStateObj({...stateObj, date: val});
   };
 
-  const url = `http://localhost:3000/past_converter/${stateObj.date}?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`;
+  const url = `/past_converter/${stateObj.date}?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`;
   
   async function apiCall() { 
     let res = await axios.get(url);

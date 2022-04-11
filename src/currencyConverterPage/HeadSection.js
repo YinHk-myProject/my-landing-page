@@ -84,7 +84,7 @@ const HeadSection = props => {
       setStateObj({...stateObj, amount: val});
   };
 
-  const url = `http://localhost:3000/converter?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`;
+  const url = `/converter?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`;
   
   async function apiCall() { 
     let res = await axios.get(url);

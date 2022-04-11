@@ -86,7 +86,7 @@ const HeadSection = props => {
   }, []);
 
 
-  const url = `http://localhost:3000/historical_rates/${stateObj.date}?base=${stateObj.base}`;
+  const url = `/historical_rates/${stateObj.date}?base=${stateObj.base}`;
 
   async function apiCall() { 
     let res = await axios.get(url);
