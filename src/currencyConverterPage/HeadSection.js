@@ -84,7 +84,7 @@ const HeadSection = props => {
       setStateObj({...stateObj, amount: val});
   };
 
-  const url = `/converter?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`;
+  const url = `http://Yinhkcurrencysvc-env.eba-pypgtkpm.us-west-2.elasticbeanstalk.com/converter?from=${stateObj.from}&to=${stateObj.to}&amount=${stateObj.amount}`;
   
   async function apiCall() { 
     let res = await axios.get(url);
