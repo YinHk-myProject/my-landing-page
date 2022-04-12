@@ -1,4 +1,4 @@
 [[redirects]]
- from = "/*"
- to = "/index.html"
+ from = "/converter"
+ to = "/http://Yinhkcurrencysvc-env.eba-pypgtkpm.us-west-2.elasticbeanstalk.com"
  status = 200
