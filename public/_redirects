@@ -1,1 +1,4 @@
 /* /index.html 200
+
+# proxy to api
+/converter   http://Yinhkcurrencysvc-env.eba-pypgtkpm.us-west-2.elasticbeanstalk.com/converter:splat  200
