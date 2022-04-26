@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { AppBar, Toolbar, Typography, Button, Menu, MenuItem } from "@mui/material";
 import withStyles from '@mui/styles/withStyles';
@@ -7,21 +7,26 @@ import { useNavigate } from 'react-router-dom';
 const styles = theme => ({
     wrapper: {
       width: '100%',
-      //backgroundColor: 'rgba(23, 28, 36, 1)'
+      //backgroundColor: 'rgba(0, 0, 0, 1)'
+    },
+    appBar: {
+      //backgroundColor: 'transparent', 
+      boxShadow: 'none'
     },
     toolbar: {
       display: "flex",
       justifyContent: "space-between",
-      //backgroundColor: 'rgba(36, 62, 99, 1)'
+      //backgroundColor: 'rgba(0, 0, 0, 0.5)'
+      backgroundColor: 'transparent'
     },
     menuButtonText: {
-      color: 'rgba(36, 62, 99, 1)',
+      color: 'rgba(255, 255, 255, 1)',
       fontWeight: 'bold',
       textTransform: 'none'
     },
     brandText: {
       fontFamily: theme.title.titleFontFamily,
-      //fontWeight: "fontWeightBold" //float: 'right'
+      marginLeft: 5
     }
 });
 
@@ -32,54 +37,23 @@ const TypographyList = classes =>
       className={classes.brandText}
       variant="h4"
       display="inline"
-      color='rgba(36, 62, 99, 1)'
+      color='rgba(255, 255, 255, 1)'
       fontWeight="fontWeightBold"
     >
-      Cu 
-    </Typography>
-    <Typography
-      variant="h4"
-      className={classes.brandText}
-      fontWeight="fontWeightBold"
-      display="inline"
-      color="rgba(1, 130, 68, 1)"
-    >
-      rr
-    </Typography>
-    <Typography
-      variant="h4"
-      className={classes.brandText}
-      fontWeight="fontWeightBold"
-      display="inline"
-      color="rgba(171, 0, 137, 1)"
-    >
-      en
-    </Typography>
-    <Typography
-      variant="h4"
-      className={classes.brandText}
-      fontWeight="fontWeightBold"
-      display="inline"
-      color="rgba(235, 94, 0, 1)"
-    >
-      cy
-    </Typography>
-    <Typography
-      variant="h4"
-      className={classes.brandText}
-      style={{marginLeft: 10}}
-      fontWeight="fontWeightBold"
-      display="inline"
-      color="orange"
-    >
-      Rate
+      Ken
     </Typography>
   </div>;
+
+const scrollToToolSection = () => {
+  const anchor =  document.getElementById('tool');
+  anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+};
 
 
 const NavBar = props => {
     const { classes } = props;
     const [anchorEl, setAnchorEl] = useState(null);
+    const [scrollPosition, setScrollPosition] = useState(0);
     const open = Boolean(anchorEl);
     const navigate = useNavigate();
 
@@ -91,9 +65,23 @@ const NavBar = props => {
       setAnchorEl(null);
     };
 
+    const handleScroll = () => {
+      const position = window.pageYOffset;
+      setScrollPosition(position);
+    };
+
+    useEffect(() => {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+
+
     return (
       <div className={classes.wrapper}>
-        <AppBar position="fixed">
+        <AppBar position="fixed" className={classes.appBar} style={{ backgroundColor: scrollPosition===0?'transparent':'rgba(0, 0, 0, .3)'}}>
             <Toolbar className={classes.toolbar}>
               {TypographyList(classes)}
               <div>
@@ -106,41 +94,31 @@ const NavBar = props => {
                   aria-expanded={open? 'true' : undefined}
                   onClick={handleClick}
                 >
-                  Menu
-                </Button>
-                <Menu
-                  id='menu'
-                  aria-labelledby='menuButton'
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                >
-                  <MenuItem onClick={()=>navigate('/')}>Home</MenuItem>
-                  <MenuItem onClick={()=>navigate('/currency_converter')}>Currency converter</MenuItem>
-                  <MenuItem onClick={()=>navigate('/historical_currency_converter')}>Historical currency converter</MenuItem>
-                  <MenuItem onClick={()=>navigate('/rates')}>Rates</MenuItem>
-                  <MenuItem onClick={()=>navigate('/historical_rates')}>Historical rates</MenuItem>
-                </Menu>
-                <Button
-                  className={classes.menuButtonText}
-                  size="large"
-                  href="https://github.com/YinHk-myProject/currency-app"
-                >
-                  Github
+                  Home
                 </Button>
                 <Button
                   className={classes.menuButtonText}
                   size="large"
                 >
                   About
+                </Button>
+                <Button
+                  className={classes.menuButtonText}
+                  size="large"
+                >
+                  Skills
+                </Button>
+                <Button
+                  className={classes.menuButtonText}
+                  size="large"
+                >
+                  Projects
+                </Button>
+                <Button
+                  className={classes.menuButtonText}
+                  size="large"
+                >
+                  Contact
                 </Button>
               </div>
             </Toolbar>

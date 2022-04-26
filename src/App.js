@@ -1,31 +1,31 @@
-import React, { Fragment } from "react";
-import { ThemeProvider,  StyledEngineProvider, CssBaseline } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { ThemeProvider,  StyledEngineProvider } from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
+import { AnimatePresence } from "framer-motion";
 
 import theme from './theme';
 import MainLandingPage from './mainLandingPage/MainLandingPage';
-import CurrencyConverterPage from './currencyConverterPage/CurrencyConverterPage';
-import HistoricalConverterPage from './historicalConverterPage/HistoricalConverterPage';
-import LatestRatePage from './latestRatePage/LatestRatePage';
-import HistoriacalRatePage from './historiacalRatePage/HistoriacalRatePage';
+import Loader from "./components/Loader";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3500);
+  }, []);
+
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
-      <MuiPickersUtilsProvider utils={MomentUtils}>
+      <AnimatePresence exitBeforeEnter>
        <Router>
         <Routes>
-         <Route path="/" caseSensitive={false} element={ <MainLandingPage /> }/>
-         <Route path="/currency_converter" caseSensitive={false} element={ <CurrencyConverterPage /> }/>
-         <Route path="/historical_currency_converter" caseSensitive={false} element={ <HistoricalConverterPage /> }/>
-         <Route path="/rates" caseSensitive={false} element={ <LatestRatePage /> }/>
-         <Route path="/historical_rates" caseSensitive={false} element={ <HistoriacalRatePage /> }/>
+         <Route path="/" caseSensitive={false} element={ loading ? <Loader /> : <MainLandingPage /> }/>
         </Routes>
        </Router>
-      </MuiPickersUtilsProvider>
+       </AnimatePresence>
       </ThemeProvider>
     </StyledEngineProvider>
     

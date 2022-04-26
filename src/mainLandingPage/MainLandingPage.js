@@ -1,33 +1,18 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { withStyles } from "@mui/styles";
+import React, { Fragment } from "react";
+import NavBar from "../components/NavBar";
+import Head from "../components/Head";
+import WaveBorder from "../components/WaveBorder";
 
-import NavBar from '../components/NavBar';
-import HeadSection from './HeadSection';
-import FeatureSection from './FeatureSection';
-import CurrencyListSection from './CurrencyListSection';
-import ToolSection from './ToolSection';
-import FooterSection from '../components/FooterSection';
 
-const styles = () => ({
-    wrapper: {
-      width: 'inherit',
-      height: 'inherit'
-    }
-});
-
-const MainLandingPage = props => {
-    const { classes } = props;
+const MainLandingPage = () => {
     return (
       <Fragment>
         <NavBar />
-        <HeadSection />
-        <FeatureSection />
-        <CurrencyListSection />
-        <ToolSection />
-        <FooterSection />
+        <Head />
+        <WaveBorder />
       </Fragment>
     );
 };
 
-export default withStyles(styles)(MainLandingPage);
+export default MainLandingPage;
 
