@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Typography, Grid, Avatar, Card } from "@mui/material";
+import { Typography, Grid, Card, CardContent } from "@mui/material";
 import { motion } from "framer-motion";
 import { makeStyles } from "@mui/styles";
 
@@ -7,17 +7,29 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles(() => ({
     wrapper: {
       width: '100%',
-      minHeight: 500,
-      //background: 'rgba(0,10,35,1)'
+      minHeight: 600,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#1a2740'
     },
     title: {
       display: 'flex',
       justifyContent: 'center',
-      marginTop: 50
+      color: '#FFFFFF',
+      marginTop: 50,
+      marginBottom: 150
     },
     text: {
        fontFamily: "'Permanent Marker', cursive"
     },
+    cardWrapper: {
+      backgroundColor: '#fafafa',
+      marginTop: 10,
+      marginBottom: 50,
+      'justify-self': 'center'
+    }
 
 }));
 
@@ -27,10 +39,12 @@ const skillList = [
   "HTML",
   "CSS",
   "React",
+  "React Native",
   "Redux",
   "TypeScript",
   "Java spring boot",
   "Node.js",
+  "Express.js",
   "Unity",
   "git"
 ]
@@ -48,8 +62,8 @@ const Skills = () => {
             Skills
           </Typography>
         </motion.div>
-        <Grid container space={2} direction="row">
-          {skillList.map(item => <Card>{item}</Card>)}
+        <Grid container space={2} sx={{ maxWidth: '50%', display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row'}}>
+          {skillList.map(item => <Card variant="outlined" className={classes.cardWrapper} ><CardContent>{item}</CardContent></Card>)}
         </Grid>
       </div>
     );

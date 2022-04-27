@@ -7,7 +7,7 @@ import image from "../image/me.jpg";
 const useStyles = makeStyles(() => ({
     wrapper: {
       width: '100%',
-      minHeight: 500,
+      minHeight: 600,
       display: 'flex',
       justifyContent: 'center',
       flexDirection: 'column'
