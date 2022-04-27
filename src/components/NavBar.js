@@ -44,11 +44,6 @@ const TypographyList = classes =>
     </Typography>
   </div>;
 
-const scrollToToolSection = () => {
-  const anchor =  document.getElementById('tool');
-  anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
-};
-
 
 const NavBar = props => {
     const { classes } = props;
@@ -79,9 +74,14 @@ const NavBar = props => {
     }, []);
 
 
+    const scrollToView = name => {
+      const anchor =  document.getElementById(name);
+      anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+
     return (
       <div className={classes.wrapper}>
-        <AppBar position="fixed" className={classes.appBar} style={{ backgroundColor: scrollPosition===0?'transparent':'rgba(0, 0, 0, .3)'}}>
+        <AppBar position="fixed" className={classes.appBar} style={{ backgroundColor: scrollPosition===0?'transparent':'rgba(0, 0, 0, .5)'}}>
             <Toolbar className={classes.toolbar}>
               {TypographyList(classes)}
               <div>
@@ -89,34 +89,42 @@ const NavBar = props => {
                   id='menuButton'
                   className={classes.menuButtonText}
                   size="large"
-                  aria-controls={open? 'menu' : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open? 'true' : undefined}
-                  onClick={handleClick}
+                  onClick={()=>scrollToView('head')}
                 >
                   Home
                 </Button>
                 <Button
                   className={classes.menuButtonText}
                   size="large"
+                  onClick={()=>scrollToView('about')}
                 >
                   About
                 </Button>
                 <Button
                   className={classes.menuButtonText}
                   size="large"
+                  onClick={()=>scrollToView('skills')}
                 >
                   Skills
                 </Button>
                 <Button
                   className={classes.menuButtonText}
                   size="large"
+                  onClick={()=>scrollToView('experience')}
+                >
+                  Experience
+                </Button>
+                <Button
+                  className={classes.menuButtonText}
+                  size="large"
+                  onClick={()=>scrollToView('projects')}
                 >
                   Projects
                 </Button>
                 <Button
                   className={classes.menuButtonText}
                   size="large"
+                  onClick={()=>scrollToView('footer')}
                 >
                   Contact
                 </Button>

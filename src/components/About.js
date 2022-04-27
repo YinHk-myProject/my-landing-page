@@ -7,7 +7,10 @@ import image from "../image/me.jpg";
 const useStyles = makeStyles(() => ({
     wrapper: {
       width: '100%',
-      minHeight: 400
+      minHeight: 500,
+      display: 'flex',
+      justifyContent: 'center',
+      flexDirection: 'column'
     },
     title: {
       display: 'flex',
@@ -30,7 +33,7 @@ const About = () => {
     const classes = useStyles();
 
     return (
-      <div className={classes.wrapper}>
+      <div className={classes.wrapper} id='about'>
         <motion.div className={classes.title}>
           <Typography className={classes.text}  gutterBottom variant="h3" component="h3">
              About me

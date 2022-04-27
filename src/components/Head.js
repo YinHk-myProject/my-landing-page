@@ -47,7 +47,7 @@ const Head = () => {
     };
 
     return (
-      <div className={classes.wrapper}>
+      <div className={classes.wrapper} id='head'>
        <Grid container space={2} direction="column" >
        <Grid item xs={12} sm={12} md={6} sx={{display: 'flex', justifyContent: "center"}}>
         <motion.div>

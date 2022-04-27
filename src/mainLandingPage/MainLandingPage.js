@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import NavBar from "../components/NavBar";
 import Head from "../components/Head";
 import About from '../components/About';
+import Skills from '../components/Skills';
 import WaveBorder from "../components/WaveBorder";
 import { motion, useViewportScroll } from "framer-motion";
 
@@ -16,7 +17,8 @@ const MainLandingPage = () => {
         />
         <NavBar />
         <Head />
-        {<About />}
+        <About />
+        <Skills />
         <WaveBorder />
       </Fragment>
     );
