@@ -3,7 +3,9 @@ import NavBar from "../components/NavBar";
 import Head from "../components/Head";
 import About from '../components/About';
 import Skills from '../components/Skills';
-import WaveBorder from "../components/WaveBorder";
+import Experience from '../components/Experience';
+import Projects from '../components/Projects';
+import FooterSection from "../components/FooterSection";
 import { motion, useViewportScroll } from "framer-motion";
 
 const MainLandingPage = () => {
@@ -19,7 +21,9 @@ const MainLandingPage = () => {
         <Head />
         <About />
         <Skills />
-        <WaveBorder />
+        <Experience />
+        <Projects />
+        <FooterSection />
       </Fragment>
     );
 };

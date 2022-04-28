@@ -18,8 +18,8 @@ const useStyles = makeStyles(() => ({
       display: 'flex',
       justifyContent: 'center',
       color: '#FFFFFF',
-      marginTop: 50,
-      marginBottom: 150
+      marginTop: 100,
+      marginBottom: 50
     },
     text: {
        fontFamily: "'Permanent Marker', cursive"
@@ -52,8 +52,6 @@ const skillList = [
 
 const Skills = () => {
     const classes = useStyles();
-
-
 
     return (
       <div className={classes.wrapper} id="skills">
