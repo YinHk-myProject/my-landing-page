@@ -18,13 +18,15 @@ const useStyles = makeStyles(() => ({
       marginTop: 50
     },
     text: {
-       fontFamily: "'Permanent Marker', cursive"
+      fontFamily: "'Permanent Marker', cursive",
+      color: 'rgb(255,255,255)'
     },
     messageContainer: {
-       display: 'flex',
-       flexDirection: 'column',
-       justifyContent: 'center',
-       alignItems: 'center'
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      color: 'rgb(255,255,255)'
     }
 
 }));

@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#1a2740'
+      //backgroundColor: '#1a2740'
     },
     title: {
       display: 'flex',

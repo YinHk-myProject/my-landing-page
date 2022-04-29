@@ -11,8 +11,7 @@ const useStyles = makeStyles(() => ({
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#1a2740'
+      alignItems: 'center'
     },
     title: {
       display: 'flex',
@@ -25,23 +24,26 @@ const useStyles = makeStyles(() => ({
        fontFamily: "'Permanent Marker', cursive"
     },
     cardWrapper: {
-      backgroundColor: '#fafafa',
+      backgroundColor: 'rgb(38, 45, 48)',
       marginTop: 10,
       marginBottom: 50,
       'justify-self': 'center',
-      minWidth: '50%'
+      minWidth: '50%',
+      borderRadius: 10
     },
     cardTitle: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'start',
-      alignItems: 'start'
+      alignItems: 'start',
+      color: '#FFFFFF'
     },
     cardContent: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'start',
-        alignItems: 'start'
+        alignItems: 'start',
+        color: '#FFFFFF'
     }
 
 }));
@@ -72,13 +74,35 @@ const Experience = () => {
           />
           <CardContent className={classes.cardContent}>
             <Typography gutterBottom variant="h6" component="h6">
-                ManPower service limited
+                ManPower service limited               
             </Typography>
-            <Typography gutterBottom variant="body" component="p">
-               Help development for a Clinical Management System application for Hospital use in the IT
-               development team Help deployment for web application,
+            <Typography gutterBottom variant="h6" component="h6">
+                2021 - 2022
+            </Typography>
+            <ul>
+             <li>
+              <Typography gutterBottom variant="body" component="p">
+                Help development for a Clinical Management System application for Hospital use in the IT
+                development team.
+              </Typography>
+             </li>
+             <li>
+              <Typography gutterBottom variant="body" component="p">
+               Help deployment for web application,
                frontend(react & redux) and backend (java spring boot).
-            </Typography>
+              </Typography>
+             </li>
+             <li>
+              <Typography gutterBottom variant="body" component="p">
+                Creating and maintaining code repositories that can be easily reused or referenced.
+              </Typography>
+             </li>
+             <li>
+              <Typography gutterBottom variant="body" component="p">
+                Work with key partners to deliver punctual, tested and reusable code in a rapidly changing environment.
+              </Typography>
+             </li>
+            </ul>
           </CardContent>
          </Card>
          </Grid>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Typography, Grid, Card, CardContent } from "@mui/material";
 import { motion } from "framer-motion";
 import { makeStyles } from "@mui/styles";
+import ScrollAnimation from 'react-animate-on-scroll';
 
 
 const useStyles = makeStyles(() => ({
@@ -11,8 +12,7 @@ const useStyles = makeStyles(() => ({
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#1a2740'
+      alignItems: 'center'
     },
     title: {
       display: 'flex',
@@ -25,10 +25,14 @@ const useStyles = makeStyles(() => ({
        fontFamily: "'Permanent Marker', cursive"
     },
     cardWrapper: {
-      backgroundColor: '#fafafa',
+      backgroundColor: 'rgb(38, 45, 48)',
       marginTop: 10,
       marginBottom: 50,
-      'justify-self': 'center'
+      'justify-self': 'center',
+      borderRadius: 10
+    },
+    cardContent: {
+      color: '#FFFFFF'
     }
 
 }));
@@ -54,6 +58,7 @@ const Skills = () => {
     const classes = useStyles();
 
     return (
+      <ScrollAnimation animateIn="fadeInX">
       <div className={classes.wrapper} id="skills">
         <motion.div className={classes.title}>
           <Typography className={classes.text}  gutterBottom variant="h3" component="h3">
@@ -61,9 +66,10 @@ const Skills = () => {
           </Typography>
         </motion.div>
         <Grid container space={2} sx={{ maxWidth: '50%', display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row'}}>
-          {skillList.map(item => <Card variant="outlined" className={classes.cardWrapper} ><CardContent>{item}</CardContent></Card>)}
+          {skillList.map(item => <Card variant="outlined" className={classes.cardWrapper} ><CardContent className={classes.cardContent}>{item}</CardContent></Card>)}
         </Grid>
-      </div>
+      
+      </div></ScrollAnimation>
     );
 };
 

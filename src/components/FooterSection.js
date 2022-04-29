@@ -11,7 +11,7 @@ const styles = theme => ({
         marginTop: 50,
     },
     container: {
-        background: 'linear-gradient(180deg, rgba(36, 62, 99, 1) 0%, rgba(23, 28, 36, 1) 100%)',
+        background: 'linear-gradient(180deg, rgba(13, 25, 33, 1) 0%, rgba(5, 8, 19, 1) 100%)',
         minHeight: 350,
         width: '100%',
         display: 'flex',
@@ -23,7 +23,7 @@ const styles = theme => ({
         paddingTop: theme.spacing(9)
     },
     typography: {
-        color: "#8f9296"
+        color: "#FFFFFF"
     }   
 });
 
@@ -35,6 +35,7 @@ const socialIcons = [
           width="24px"
           height="24px"
           viewBox="0 0 24 24"
+          fill='#FFFFFF'
           xmlns="http://www.w3.org/2000/svg"
         >
           <title>GitHub</title>
@@ -51,6 +52,7 @@ const socialIcons = [
           width="24px"
           height="24px"
           viewBox="0 0 24 24"
+          fill='#FFFFFF'
           xmlns="http://www.w3.org/2000/svg"
         >
           <title>Facebook</title>
@@ -67,6 +69,7 @@ const socialIcons = [
           width="24px"
           height="24px"
           viewBox="0 0 24 24"
+          fill='#FFFFFF'
           xmlns="http://www.w3.org/2000/svg"
         >
           <title>LinkedIn</title>
@@ -84,11 +87,11 @@ const FooterSection = props => {
     return (
       <footer className={classes.wrapper} id="footer">
         <WaveBorder 
-            upperColor= '#FFFFFF'
+            upperColor= 'rgba(18,38,45,255)'
             waveColor1= 'rgba(189, 4, 68, .7)'
             waveColor2= 'rgba(237, 202, 24, .7)'
             waveColor3= 'rgba(38, 166, 201, .7)'
-            waveColor4= 'rgba(36, 62, 99, 1)'
+            waveColor4= 'rgba(13, 25, 33, 1)'
             className={classes.waveBorder}
         />
         <div className={classes.container}>
