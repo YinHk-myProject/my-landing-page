@@ -50,7 +50,8 @@ const skillList = [
   "Node.js",
   "Express.js",
   "Unity",
-  "git"
+  "SQL",
+  "Git"
 ]
 
 

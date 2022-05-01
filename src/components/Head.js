@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Typography, 
          Grid,
          Button } from "@mui/material";
@@ -17,12 +17,10 @@ const useStyles = makeStyles(() => ({
         backgroundPosition: 'center',
         'background-repeat': 'no-repeat',
         paddingTop: 50,
-        justifyContent: 'center',
-        //alignItems: 'center'
+        justifyContent: 'center'
     },
     text1: {
-        color: 'rgb(255,255,255)',
-        //fontFamily:  '"Boogaloo", cursive'
+        color: 'rgb(255,255,255)'
     },
     text2: {
         color: 'rgb(255,255,255)',

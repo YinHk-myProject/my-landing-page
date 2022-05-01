@@ -10,6 +10,7 @@ const useStyles = makeStyles(() => ({
       minHeight: 600,
       display: 'flex',
       justifyContent: 'center',
+      alignItems: 'center',
       flexDirection: 'column'
     },
     title: {
@@ -27,6 +28,15 @@ const useStyles = makeStyles(() => ({
       justifyContent: 'center',
       alignItems: 'center',
       color: 'rgb(255,255,255)'
+    },
+    container: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '90%'
+    },
+    message: {
+      marginBottom: 12
     }
 
 }));
@@ -41,8 +51,8 @@ const About = () => {
              About me
           </Typography>
         </motion.div>
-        <Grid container space={2} direction="column">
-          <Grid item xs={12} sm={12} md={6} sx={{ display: 'flex', justifyContent: 'center'}}>
+        <Grid container space={2} className={classes.container}>
+          <Grid item xs={12} sm={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
            <motion.div className={classes.messageContainer}>
             <Typography className={classes.message}  gutterBottom variant="body" component="p">
                I am a developer and love building software application including web apps, 
@@ -61,10 +71,10 @@ const About = () => {
                to create new application, my brain is full of inspiration. I pursure a career in software engineer. 
             </Typography>
            </motion.div>
-           <Grid item xs={12} sm={12} md={6}>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
              <Avatar alt="ken" src={image} variant="square" sx={{ width: 200, height: 200, borderRadius: 8 }}/>
            </Grid>
-          </Grid>
         </Grid>
       </div>
     );
