@@ -43,7 +43,7 @@ const useStyles = makeStyles(() => ({
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'start',
-      alignItems: 'start',
+      alignItems: 'center',
       color: '#FFFFFF'
     }
 
