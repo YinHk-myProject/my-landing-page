@@ -56,7 +56,7 @@ const About = () => {
            <motion.div className={classes.messageContainer}>
             <Typography className={classes.message}  gutterBottom variant="body" component="p">
                I am a developer and love building software application including web apps, 
-               mobile apps and unity games. Becaise design and building digital products are
+               mobile apps and unity games. Because design and building digital products are
                interesting for me. I have recently moved to Toronto and looking for a new opportunities.
             </Typography>
             <Typography className={classes.message}  gutterBottom variant="body" component="p">
