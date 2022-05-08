@@ -67,7 +67,7 @@ const About = () => {
             </Typography>
             <Typography className={classes.message}  gutterBottom variant="body" component="p">
                My previous job is a programmer, mainly for web development. I learned frontend and 
-               also backend technology. Fuled by boundless enthusiasm, I'm easily inspired and learn
+               also backend technology. Fueled by boundless enthusiasm, I'm easily inspired and learn
                to create new application, my brain is full of inspiration. I pursure a career in software engineer. 
             </Typography>
            </motion.div>
